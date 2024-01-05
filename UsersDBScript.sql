@@ -29,7 +29,7 @@ VALUES
 	('Admin')
 ;
 
-INSERT INTO User (Guid, Username, PasswordHash) 
+INSERT INTO Users (Guid, Username, PasswordHash) 
 VALUES
 	('123456', 'testuser1', 'hash1'),
 	('789012', 'testuser2', 'hash2')
