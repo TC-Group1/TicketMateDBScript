@@ -1,26 +1,26 @@
-CREATE DATABASE TicketMate;
+CREATE DATABASE IF NOT EXISTS TicketMate;
 
 USE TicketMate;
 
-CREATE TABLE Users (
-    Id INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS Users (
+    Id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     Guid CHAR(36) UNIQUE NOT NULL,
     Username NVARCHAR(50) NOT NULL,
     PasswordHash VARCHAR(100),
     UNIQUE KEY unique_username (Username)
 );
 
-Create Table Roles (
-	Id INT Auto_Increment Primary Key Not Null,
-    Name Nvarchar(32) Not Null
+CREATE TABLE IF NOT EXISTS Roles (
+	Id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    Name NVARCHAR(32) NOT NULL
 );
     
-Create Table UserRoles (
-	Id Int Auto_Increment Primary Key Not Null,
-	UserId Int not null,
-	RoleId Int not null,
-	Foreign key (UserId) References User(Id),
-	Foreign key (RoleId) References Roles(Id)
+CREATE TABLE IF NOT EXISTS UserRoles (
+	Id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+	UserId INT NOT NULL,
+	RoleId INT NOT NULL,
+	FOREIGN KEY (UserId) REFERENCES Users(Id),
+	FOREIGN KEY (RoleId) REFERENCES Roles(Id)
 );
 	
 INSERT INTO Roles (Name) 
